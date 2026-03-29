@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <title>Abbas | Portfolio</title>
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        width: 100%;
+        background-color: #0f172a;
+        font-family: sans-serif;
+    }
+
+    a {
+        color: white;
+        text-decoration: none;
+    }
+
+    #Navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 50px;
+        background: rgba(2, 6, 23, 0.9);
+        backdrop-filter: blur(10px);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+    }
+
+    .logo {
+        font-size: 24px;
+        font-weight: bold;
+        color: white;
+    }
+
+    #Navbar ul {
+        list-style: none;
+        display: flex;
+        gap: 40px;
+    }
+
+    #Navbar a {
+        position: relative;
+        text-decoration: none;
+        color: white;
+        font-size: 18px;
+        transition: 0.3s;
+    }
+
+    #Navbar a::after {
+        content: "";
+        position: absolute;
+        width: 0%;
+        height: 2px;
+        background: #6366f1;
+        left: 0;
+        bottom: -5px;
+        transition: 0.3s;
+    }
+
+    #Navbar a:hover::after { width: 100%; }
+    #Navbar a:hover { color: #6366f1; }
+
+    .hamburger {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        background: none;
+        border: none;
+        padding: 5px;
+    }
+
+    .hamburger span {
+        display: block;
+        width: 25px;
+        height: 2px;
+        background: white;
+        border-radius: 2px;
+        transition: 0.3s;
+    }
+
+    #home {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 100px 40px 60px;
+        gap: 40px;
+        flex-wrap: wrap;
+    }
+
+    #intro {
+        color: aliceblue;
+        max-width: 500px;
+        font-size: 18px;
+    }
+
+    #intro h1 {
+        font-size: clamp(28px, 5vw, 48px);
+        margin-bottom: 8px;
+    }
+
+    #intro h2 {
+        color: #6366f1;
+        font-size: clamp(20px, 3vw, 28px);
+        margin-bottom: 16px;
+    }
+
+    #intro p {
+        line-height: 1.7;
+        color: #cbd5e1;
+    }
+
+    #project_Button {
+        border: 2px solid #6366f1;
+        padding: 10px 20px;
+        margin-top: 20px;
+        display: inline-block;
+        border-radius: 10px;
+        background-color: #6366f1;
+        color: white;
+        font-size: 16px;
+        transition: 0.3s;
+        text-align: center;
+    }
+
+    #project_Button:hover {
+        transform: scale(1.05);
+        background-color: #4f46e5;
+    }
+
+    #home .pic img {
+        border-radius: 50%;
+        width: 220px;
+        height: 220px;
+        object-fit: cover;
+        transition: 0.3s;
+        border: 3px solid #6366f1;
+    }
+
+    #home .pic img:hover {
+        transform: scale(1.05);
+    }
+
+    #about {
+        color: white;
+        font-size: 18px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 80px 20px;
+    }
+
+    #about_section {
+        max-width: 600px;
+        text-align: center;
+        padding: 0 20px;
+    }
+
+    #about_section h1 {
+        font-size: clamp(28px, 5vw, 40px);
+        margin-bottom: 24px;
+    }
+
+    #about_section p {
+        color: #cbd5e1;
+        line-height: 1.8;
+        margin-bottom: 24px;
+    }
+
+    #about_section ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        align-items: center;
+    }
+
+    #about_section ul li {
+        font-size: 16px;
+        color: #e2e8f0;
+    }
+
+    #about_section i {
+        margin-right: 10px;
+        color: #6366f1;
+    }
+
+    #skills {
+        color: white;
+        padding: 80px 40px;
+        text-align: center;
+    }
+
+    #skills h1 {
+        font-size: clamp(28px, 5vw, 40px);
+        margin-bottom: 40px;
+    }
+
+    #containers {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+    .Container {
+        background-color: #1e293b;
+        padding: 30px 20px;
+        border-radius: 15px;
+        transition: 0.3s;
+    }
+
+    .Container:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    }
+
+    .Container i {
+        font-size: 40px;
+        margin-bottom: 12px;
+    }
+
+    .Container h2 {
+        margin: 10px 0 8px;
+        font-size: 18px;
+    }
+
+    .Container p {
+        font-size: 14px;
+        color: #94a3b8;
+        line-height: 1.6;
+    }
+
+    #HTML { color: #f97316; }
+    #CSS  { color: #3b82f6; }
+    #JS   { color: #facc15; }
+    #responsive { color: #22c55e; }
+    #Git  { color: #f97316; }
+
+    #containers .Container:last-child:nth-child(odd) {
+        grid-column: 1 / -1;
+        max-width: 320px;
+        margin: 0 auto;
+    }
+
+    #project {
+        color: white;
+        padding: 80px 40px;
+        text-align: center;
+    }
+
+    #project > h1 {
+        font-size: clamp(28px, 5vw, 40px);
+        margin-bottom: 40px;
+    }
+
+    #projects {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 30px;
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    .project-card {
+        background: #112240;
+        padding: 25px;
+        border-radius: 15px;
+        text-align: center;
+        box-shadow: 0 0 20px rgba(100, 150, 255, 0.15);
+        transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .project-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 12px 30px rgba(100, 150, 255, 0.3);
+    }
+
+    .project-card h3 {
+        font-size: 20px;
+        color: white;
+    }
+
+    .project-card p {
+        color: #94a3b8;
+        font-size: 14px;
+        line-height: 1.6;
+        flex: 1;
+    }
+
+    .project-card a {
+        border: 2px solid #6366f1;
+        padding: 8px 18px;
+        border-radius: 8px;
+        background-color: #6366f1;
+        color: white;
+        font-size: 14px;
+        transition: 0.3s;
+        display: inline-block;
+        margin-top: 8px;
+    }
+
+    .project-card a:hover {
+        background-color: #4f46e5;
+        transform: scale(1.04);
+    }
+
+    #footer {
+        background: #020617;
+        color: #cbd5f5;
+        text-align: center;
+        padding: 40px 20px;
+        margin-top: 30px;
+    }
+
+    .footer-content h2 {
+        color: #6366f1;
+        margin-bottom: 10px;
+        font-size: 20px;
+    }
+
+    .footer-content p {
+        font-size: 14px;
+        margin-bottom: 15px;
+        color: #94a3b8;
+    }
+
+    .socials a {
+        color: white;
+        margin: 0 10px;
+        font-size: 22px;
+        transition: 0.3s;
+        display: inline-block;
+    }
+
+    .socials a:hover {
+        color: #6366f1;
+        transform: scale(1.2);
+    }
+
+    .copy {
+        margin-top: 20px;
+        font-size: 12px;
+        color: #475569;
+    }
+
+    @media (max-width: 768px) {
+        #Navbar {
+            padding: 15px 24px;
+        }
+
+        #Navbar ul {
+            display: none;
+            flex-direction: column;
+            gap: 0;
+            position: absolute;
+            top: 60px;
+            left: 0;
+            width: 100%;
+            background: rgba(2, 6, 23, 0.97);
+            padding: 10px 0;
+        }
+
+        #Navbar ul.open {
+            display: flex;
+        }
+
+        #Navbar ul li a {
+            display: block;
+            padding: 14px 30px;
+            font-size: 16px;
+        }
+
+        .hamburger {
+            display: flex;
+        }
+
+        #home {
+            flex-direction: column-reverse;
+            text-align: center;
+            padding: 100px 24px 60px;
+        }
+
+        #home .pic img {
+            width: 180px;
+            height: 180px;
+        }
+
+        #about {
+            padding: 60px 20px;
+        }
+
+        #skills {
+            padding: 60px 24px;
+        }
+
+        #containers {
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        #project {
+            padding: 60px 24px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        #containers {
+            grid-template-columns: 1fr;
+        }
+
+        #containers .Container:last-child:nth-child(odd) {
+            grid-column: unset;
+            max-width: 100%;
+        }
+
+        #home .pic img {
+            width: 150px;
+            height: 150px;
+        }
+
+        #intro {
+            font-size: 16px;
+        }
+
+        #projects {
+            grid-template-columns: 1fr;
+        }
+
+        #Navbar {
+            padding: 12px 18px;
+        }
+
+        .logo {
+            font-size: 20px;
+        }
+    }
+    </style>
+</head>
+<body>
+    <header>
+        <nav id="Navbar">
+            <span class="logo">AB-Dev</span>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul id="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#project">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home">
+            <div id="intro">
+                <h1>Hi I'm Abbas</h1>
+                <h2>Frontend Developer</h2>
+                <p>I am a Frontend Developer skilled in HTML, CSS, and JavaScript, passionate about building responsive, user-friendly, and visually appealing web interfaces with clean and efficient design.</p>
+                <a id="project_Button" href="#project">View Projects</a>
+            </div>
+            <div class="pic">
+                <img src="/pic.png" alt="Abbas photo">
+            </div>
+        </section>
+
+        <section id="about">
+            <div id="about_section">
+                <h1>About me</h1>
+                <p>I am a dedicated Frontend Developer with a strong foundation in HTML, CSS, and JavaScript. I enjoy building responsive and user-friendly websites, focusing on clean design and smooth user experience. I am continuously learning and improving my skills to create better and more efficient web solutions.</p>
+                <ul>
+                    <li><i class="fa-solid fa-map-pin"></i>Frontend Developer</li>
+                    <li><i class="fa-solid fa-laptop-code"></i>HTML, CSS, JavaScript</li>
+                    <li><i class="fa-solid fa-plane-departure"></i>Passionate to learning</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="skills">
+            <div id="skills_section">
+                <h1>Skills</h1>
+                <div id="containers">
+                    <div class="Container">
+                        <i id="HTML" class="fa-brands fa-html5"></i>
+                        <h2>HTML</h2>
+                        <p>Building structured and semantic web pages using modern HTML5 standards.</p>
+                    </div>
+                    <div class="Container">
+                        <i id="CSS" class="fa-brands fa-css3"></i>
+                        <h2>CSS</h2>
+                        <p>Styling responsive and visually appealing layouts using Flexbox and modern design techniques.</p>
+                    </div>
+                    <div class="Container">
+                        <i id="JS" class="fa-brands fa-square-js"></i>
+                        <h2>JavaScript</h2>
+                        <p>Creating interactive and dynamic user experiences with clean and efficient code.</p>
+                    </div>
+                    <div class="Container">
+                        <i id="responsive" class="fa-solid fa-palette"></i>
+                        <h2>Responsive Design</h2>
+                        <p>Designing websites that work seamlessly across all devices and screen sizes.</p>
+                    </div>
+                    <div class="Container">
+                        <i id="Git" class="fa-brands fa-github"></i>
+                        <h2>Git &amp; GitHub</h2>
+                        <p>Managing code versions and collaborating efficiently using Git and GitHub.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="project">
+            <h1>Projects</h1>
+            <div id="projects">
+                <div class="project-card">
+                    <h3>Tic Tac Toe</h3>
+                    <p>An interactive Tic Tac Toe game where two players can play with a clean and responsive UI.</p>
+                    <a href="/Tictactoe.html" target="_blank">View Project</a>
+                </div>
+                <div class="project-card">
+                    <h3>Quiz App</h3>
+                    <p>A fun quiz application with multiple questions, score tracking, and instant feedback.</p>
+                    <a href="/quiz.html" target="_blank">View Project</a>
+                </div>
+                <div class="project-card">
+                    <h3>Calculator</h3>
+                    <p>A simple and responsive calculator built using JavaScript for basic arithmetic operations.</p>
+                    <a href="/Calculator.html" target="_blank">View Project</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="footer">
+        <div class="footer-content">
+            <h2>Abbas | Frontend Developer</h2>
+            <p>Building clean, responsive &amp; user-friendly web experiences.</p>
+            <div class="socials">
+                <a href="https://github.com/M-Abbas-567" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/abbas-asghar/" target="_blank"><i class="fab fa-linkedin"></i></a>
+            </div>
+            <p class="copy">© 2026 Abbas. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+        });
+
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('open');
+            });
+        });
+    </script>
+</body>
+</html>

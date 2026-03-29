@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+        body{
+            background-color: #548687;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container{
+            width: 304px;
+            height: 450px;
+            border: 2px solid;
+            border-radius: 15px;
+            background-color: rgba(0, 0, 0, 0.481);
+            padding: 10px;
+        }
+        .dis{
+            height: 120px;
+            width: 280px;
+            background-color: rgba(0, 0, 0, 0.481);
+            border-radius: 5px;
+            font-size: 40px;
+            color: antiquewhite;
+        }
+        .box{
+            margin-top: 5px;
+            height: 304px;
+            padding: 3px;
+            border-radius: 5px;
+            background-color: rgba(0, 0, 0, 0.481);
+            display: grid;
+            grid-template-columns: repeat(4, 69px);
+            justify-items: center;
+        }
+        .item{
+            height: 60px;
+            width: 60px;
+            border-radius: 50%;
+            font-size: 20px;
+            background-color: #a6a6a6;
+            
+        }
+        .item:hover{
+            cursor: pointer;
+            background-color: #ff9501;
+        }
+    </style>
+</head>
+<body>
+    <section class="container">
+    <div class="dis">
+    </div>
+    <div class="box">
+        <button class="item">1</button>
+        <button class="item">2</button>
+        <button class="item">3</button>
+        <button class="item">+</button>
+        <button class="item">4</button>
+        <button class="item">5</button>
+        <button class="item">6</button>
+        <button class="item">-</button>
+        <button class="item">7</button>
+        <button class="item">8</button>
+        <button class="item">9</button>
+        <button class="item">*</button>
+        <button class="item">C</button>
+        <button class="item">0</button>
+        <button class="item">=</button>
+        <button class="item">/</button>
+    </div>
+    </section>
+    <script>
+    let display = document.querySelector(".dis");
+    let buttons = document.querySelectorAll(".item");
+
+    let currentInput = "";
+
+    buttons.forEach(button => {
+        button.addEventListener("click", () => {
+            let value = button.innerText;
+
+            if (value === "C") {
+                currentInput = "";
+                display.innerText = "";
+            } 
+            else if (value === "=") {
+                try {
+                    currentInput = eval(currentInput);
+                    display.innerText = currentInput;
+                } catch {
+                    display.innerText = "Error";
+                }
+            } 
+            else {
+                currentInput += value;
+                display.innerText = currentInput;
+            }
+        });
+    });
+</script>
+</body>
+</html>

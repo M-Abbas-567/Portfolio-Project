@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Test</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .box{
+            height: 100vh;
+            background-color: #7C3626;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .Ques{
+            height: 65px;
+            font-weight: 500;
+            padding: 1rem;
+        }
+        .Ans{
+            display: flex;
+            flex-direction: column;
+            padding: 1rem;
+            gap: 20px;
+        }
+        .btn{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+        button{
+            width: 22%;
+            border-radius: 50px;
+            padding: 10px;
+            cursor: pointer;
+            background-color: #FFCDBC;
+            border: #2ecc71;
+        }
+        .container{
+            background-color: #F5853F;
+            width: 478px;
+            height: 315px;
+        }
+        #Fscore{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <section class="box">
+    <form class="container">
+        <div class="Ques">
+        <h2></h2>
+        </div>
+        <div class="Ans">
+            <label for="option1">
+                <input type="radio" id="option1" value="a" name="option">
+                <span class="A"></span>
+            </label>
+            <label for="option2">
+                <input type="radio" id="option2" value="b" name="option">
+                 <span class="B"></span>             
+            </label>
+            <label for="option3">
+                <input type="radio" id="option3" value="c" name="option">          
+                 <span class="C"></span>
+            </label>
+            <label for="option4">
+                <input type="radio" id="option4" value="d" name="option">
+                 <span class="D"></span>                
+            </label>
+        </div>
+        <div class="btn">
+            <button type="button">Next</button>
+        </div>
+        <div id="Fscore"></div>
+    </form>
+    
+    </section>
+    <script src="quiz.js"></script>
+</body>
+</html>

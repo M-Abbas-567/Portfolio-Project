@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tictactoe</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background-color: #548687;
+        }
+        h1{
+            text-align: center;
+            position: relative;
+            top: 20px;
+            font-size: 50px;
+        }
+        .container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50vh;
+            flex-direction: column;
+            
+        }
+        .items{
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            width: 30vh;
+            gap: 8px;
+        }
+        .box{
+            font-size: 50px;
+            height: 60px;
+            width: 60px;
+            background-color: #ffffc7;
+            border-radius: 6px;
+            border: none;
+            color: brown;
+            box-shadow: 2px 3px 5px black;
+        }
+        .situation{
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+        .r-btn{
+            height: 30px;
+            width: 60px;
+            border-radius: 5px;
+            border: none;
+            margin-top: -50px;
+        }
+        .N-btn{
+            height: 30px;
+            width: 80px;
+            border-radius: 5px;
+            border: none;
+            margin-top: -50px;
+        }
+        .msg{
+            text-align: center;
+            height: 30px;
+            transform: translateY(40px);
+            font-size: 50px;
+            font-weight: 400;
+            color: #ffffc7;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <h1>TicTacToe</h1>
+        <p class="msg">    
+            </p>
+        <div class="container">
+            
+            <div class="items">
+            <button class="box"></button><button class="box"></button><button class="box"></button><button class="box"></button><button class="box"></button><button class="box"></button><button class="box"></button><button class="box"></button><button class="box"></button>
+            </div>
+            </div>
+            <div class="situation">
+            <button class="N-btn">
+                    New Game
+                </button>
+            <button class="r-btn">
+                    Reset
+                </button>
+        </div>
+        </div>
+    </section>
+    <script src="Tictactoe.js"></script>
+</body>
+</html>
